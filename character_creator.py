@@ -4,7 +4,7 @@ import random
 
 
 def product_yield(product_result, counter):
-    """TO EXTRACT N RANDOM CHARACTERS"""
+    """EXTRACT N RANDOM CHARACTERS"""
     try:
         random.sample(product_result, k=counter)
     except ValueError:
@@ -17,7 +17,7 @@ def product_yield(product_result, counter):
 
 
 def body_parts_extender(part, body_parts):
-    """TO EXTRACT NESTED LISTS AND TO FILL body_parts"""
+    """EXTRACT NESTED LISTS AND TO FILL body_parts"""
     if isinstance(part, list):
         for nested_object in part:
             body_parts.append(nested_object)
@@ -26,7 +26,7 @@ def body_parts_extender(part, body_parts):
 
 
 def json_wrapper(func):
-    """TO CREATE AND FILL json_file_name"""
+    """CREATE AND FILL json_file_name"""
     def wrapped():
         json_file_name = 'characters_db.json'
         if os.path.exists(json_file_name):
@@ -48,7 +48,7 @@ def characters_database_creator(f):
     """CREATE DATABASE WITH UNIQUE CHARACTERS"""
     with open('result.json') as file:
         result = json.load(file)
-    characters = list(product_yield(result, counter=4))
+    characters = list(product_yield(result, counter=1000))
     character_number = 0
     for character in characters:
         body_parts = []
@@ -59,7 +59,6 @@ def characters_database_creator(f):
         print(character_n)
         json_db = json.dumps(character_n)
         f.write(json_db + ',\n')
-
 
 
 characters_database_creator()
