@@ -1,28 +1,45 @@
 import json
 import os
 import random
+from category_builder import texts, notes, doors, opttas
 
 
-def product_yield(product_result, counter):
+def product_yield(generated_products, counter):
     """EXTRACT N RANDOM CHARACTERS"""
     try:
-        random.sample(product_result, k=counter)
+        random.sample(generated_products, k=counter)
     except ValueError:
-        print(f'ValueError: Sample larger than population or is negative\nChanged: counter={len(product_result)}\n')
-        counter = len(product_result)
+        print(f'ValueError: Sample larger than population or is negative\nChanged: counter={len(generated_products)}\n')
+        counter = len(generated_products)
     finally:
-        k_products = random.sample(product_result, k=counter)
+        k_products = random.sample(generated_products, k=counter)
         for prod in k_products:
-            yield tuple(prod)
+            yield list(prod)
 
 
-def body_parts_extender(part, body_parts):
+def body_parts_extractor(part, body_parts):
     """EXTRACT NESTED LISTS AND TO FILL body_parts"""
     if isinstance(part, list):
         for nested_object in part:
             body_parts.append(nested_object)
     else:
         body_parts.append(part)
+
+
+def body_parts_injector(characters, parts, count=None):
+    """ADD OPTIONAL PARTS IN CHARACTERS
+
+    Without argument count all characters get part.
+    """
+    if count is None:
+        count = len(characters)
+    if count > len(characters):
+        count = len(characters) // 2
+    random_characters = random.sample(characters, count)
+    for character in random_characters:
+        random_parts = random.sample(parts, 1)
+        character.append(random_parts[0])
+    return characters
 
 
 def json_wrapper(func):
@@ -46,19 +63,24 @@ def json_wrapper(func):
 @json_wrapper
 def characters_database_creator(f):
     """CREATE DATABASE WITH UNIQUE CHARACTERS"""
-    with open('result.json') as file:
+    with open('precooked_products.json') as file:
         result = json.load(file)
-    characters = list(product_yield(result, counter=1000))
-    character_number = 0
+    characters = list(product_yield(result, counter=500))
+    # insert body_parts_injector
+    characters = body_parts_injector(characters, texts, count=20)
+    characters = body_parts_injector(characters, notes, count=20)
+    characters = body_parts_injector(characters, doors, count=None)
+    character_number = 1
     for character in characters:
         body_parts = []
         for part in character:
-            body_parts_extender(part, body_parts)
-        character_number += 1
+            body_parts_extractor(part, body_parts)
+        # чистим notes, opttas, lid_3
         character_n = {"id": character_number, "body": body_parts}
-        print(character_n)
+        print(f'Added: {character_n}')
         json_db = json.dumps(character_n)
         f.write(json_db + ',\n')
+        character_number += 1
 
 
 characters_database_creator()
