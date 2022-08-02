@@ -1,10 +1,12 @@
 import json
 import os
 import random
+from body_parts_injector import inject_body_parts
 from category_builder import texts, notes, doors, opttas
+from it_pass_cleaner import clean_it_pass
 
 
-def product_yield(generated_products, counter):
+def yield_product(generated_products, counter):
     """EXTRACT N RANDOM CHARACTERS"""
     try:
         random.sample(generated_products, k=counter)
@@ -15,31 +17,6 @@ def product_yield(generated_products, counter):
         k_products = random.sample(generated_products, k=counter)
         for prod in k_products:
             yield list(prod)
-
-
-def body_parts_extractor(part, body_parts):
-    """EXTRACT NESTED LISTS AND TO FILL body_parts"""
-    if isinstance(part, list):
-        for nested_object in part:
-            body_parts.append(nested_object)
-    else:
-        body_parts.append(part)
-
-
-def body_parts_injector(characters, parts, count=None):
-    """ADD OPTIONAL PARTS IN CHARACTERS
-
-    Without argument count all characters get part.
-    """
-    if count is None:
-        count = len(characters)
-    if count > len(characters):
-        count = len(characters) // 2
-    random_characters = random.sample(characters, count)
-    for character in random_characters:
-        random_parts = random.sample(parts, 1)
-        character.append(random_parts[0])
-    return characters
 
 
 def json_wrapper(func):
@@ -61,26 +38,37 @@ def json_wrapper(func):
 
 
 @json_wrapper
-def characters_database_creator(f):
+def create_characters_db(f):
     """CREATE DATABASE WITH UNIQUE CHARACTERS"""
+    characters_count = 1000
+    notes_count = 30
+    texts_count = 300
+    opttas_count = 20
+    doors_count = None
+    shuffle_iterations = 6
+
     with open('precooked_products.json') as file:
         result = json.load(file)
-    characters = list(product_yield(result, counter=500))
+
+    iterations = 0
+    while shuffle_iterations != iterations:
+        random.shuffle(result)
+        iterations += 1
+
+    characters = list(yield_product(result, characters_count))
     # insert body_parts_injector
-    characters = body_parts_injector(characters, texts, count=20)
-    characters = body_parts_injector(characters, notes, count=20)
-    characters = body_parts_injector(characters, doors, count=None)
+    clean_it_pass(characters)
+    characters = inject_body_parts(characters, notes, notes_count)
+    characters = inject_body_parts(characters, texts, texts_count)
+    characters = inject_body_parts(characters, doors, doors_count)
+    characters = inject_body_parts(characters, opttas, opttas_count)
     character_number = 1
     for character in characters:
-        body_parts = []
-        for part in character:
-            body_parts_extractor(part, body_parts)
-        # чистим notes, opttas, lid_3
-        character_n = {"id": character_number, "body": body_parts}
+        character_n = {"id": character_number, "body": character}
         print(f'Added: {character_n}')
         json_db = json.dumps(character_n)
         f.write(json_db + ',\n')
         character_number += 1
 
 
-characters_database_creator()
+create_characters_db()

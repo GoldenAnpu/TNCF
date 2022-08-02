@@ -1,32 +1,29 @@
-import random
 import json
 import os
+import bpy
+import random
 
 
 # bpy.data.objects[f'{obj.name}'].hide_set(1)
-def mix_and_render(output_dir, output_file_pattern_string='render%d.png', numbers=2):
-    # def mix_and_render(numbers=2):
-    bunch_of_kruzhek = list(product(cups, eyes))
+def render_characters(output_dir, output_file_pattern_string='render%d.png', number=2):
+    with open('characters_db.json') as file:
+        characters_db = json.load(file)
     iterations = 0
-    random.shuffle(bunch_of_kruzhek)
-    print(len(bunch_of_kruzhek))
-    for kruzhek in bunch_of_kruzhek:
-        cache_list = []
-        if iterations < numbers and numbers <= len(bunch_of_kruzhek):
-            for chasti in kruzhek:
-                # bpy.data.objects[chasti].hide_render = False
-                cache_list.append(chasti)
-            # bpy.context.scene.render.filepath = os.path.join(output_dir, (output_file_pattern_string % iterations))
-            # bpy.ops.render.render(write_still = True)
-            print(cache_list)
-            for chasti in cache_list:
-                # bpy.data.objects[chasti].hide_render = True
-                print(chasti)
+    random.shuffle(characters_db)
+    for character in characters_db:
+        body = character.get('body')
+        if len(characters_db) >= number > iterations:
+            cache_list = []
+            for part in body:
+                bpy.data.objects[part].hide_render = False
+                cache_list.append(part)
+            bpy.context.scene.render.filepath = os.path.join(output_dir, (output_file_pattern_string % iterations))
+            bpy.ops.render.render(write_still=True)
+            for part in cache_list:
+                bpy.data.objects[part].hide_render = True
             iterations += 1
         else:
-            print('shit')
             break
 
 
-mix_and_render('D:/Projects/Blender/rendered', 'randomrend%d.png', 3)
-mix_and_render(5)
+render_characters('D:/Projects/Blender/Tinycafe/blender/rendered1000/', 'randomrend%d.png', 10)

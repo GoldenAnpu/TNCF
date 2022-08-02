@@ -63,3 +63,12 @@ eyes = [
     ['glasses', 'eyes_4_surprised'],
     ['glasses', 'eyes_5_hypno']
 ]
+
+materials = [
+    '36_griven', 'black_st', 'blue_light_bg_st', 'blue_st', 'brown_st_bg', 'chocolate_st', 'corral_st', 'eyes_hipno_st',
+    'glass_brown_st', 'glass_white_st', 'gradient_green_blue_bg', 'gradient_green_blue_st',
+    'gradient_pink_orange_st_bg', 'gradient_rainbow_bg', 'gradient_rainbow_st', 'gradient_violet_green_st_bg',
+    'gradient_yellow_orange_st_bg', 'green_cold_bg', 'green_cold_st', 'green_st_bg', 'lemon_st_bg', 'mint_st', 'neon',
+    'orange_st_bg', 'pink_light_st_bg', 'pink_natural_st_bg', 'poker_face', 'vaffle_st_bg', 'violet_st', 'violet_st_bg',
+    'white_st '
+]

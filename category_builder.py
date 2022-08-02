@@ -22,6 +22,8 @@ def caps_creator(creams, tops, lids):
             pass
         elif 'top_jem_1' in cap and 'cream_5_marshmallow' in cap:
             pass
+        elif 'top_jem_1' in cap and 'cream_4_ice' in cap:
+            pass
         elif 'top_jem_2_drop' in cap and 'cream_1_milk' in cap:
             pass
         elif 'top_jem_2_drop' in cap and 'cream_2_chocolate' in cap:
@@ -35,6 +37,8 @@ def caps_creator(creams, tops, lids):
         elif 'cream_3_ice_balls' in cap and 'top_pills_happy' in cap:
             pass
         elif 'cream_3_ice_balls' in cap and 'top_star_sweet' in cap:
+            pass
+        elif 'cream_3_ice_balls' in cap and 'lid_6_up' in cap:
             pass
         elif 'cream_2_chocolate' in cap and 'top_pills_happy' in cap:
             pass
@@ -59,6 +63,10 @@ def caps_creator(creams, tops, lids):
         elif 'cream_5_marshmallow' in cap and 'lid_4_hat60x_cut' in cap:
             pass
         elif 'cream_5_marshmallow' in cap and 'lid_5_ribbed' in cap:
+            pass
+        elif 'cream_4_ice' in cap and 'lid_3_hat60x' in cap:
+            pass
+        elif 'cream_4_ice' in cap and 'lid_4_hat60x_cut' in cap:
             pass
         elif 'top_star_sweet' in cap and 'cream_5_marshmallow' in cap:
             pass
@@ -91,7 +99,7 @@ def objects_lists_creator():
     lids = []  # just lids for the cup
     creams = []  # topping over the lids
     tops = []  # additional layer for creams
-    tcandys = []  # candies for tongue
+    tcandys = ['it_pass']  # candies for tongue
 
     # optional
     create_category_list_of_objects(objects_to_sort, p_doors, 'door_')
