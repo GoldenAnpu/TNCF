@@ -6,8 +6,29 @@ from material_changer import make_it_colorful
 from predefined_categories import materials
 
 
-def render_characters(output_dir, output_file_pattern_string='render%d.png', number=2):
+def special_character(characters_db, special):
+    """ To render certain character:
+                                    'text_cafe'
+                                    'note_36'
+                                    'note_pface'
+                                    'opttas_question'
+                                    'opttas_tubule'
+    """
+    while True:
+        character = (random.sample(characters_db, 1))[0]
+        body = character.get('body')
+        if special in body:
+            return body
 
+
+def random_character(characters_db):
+    """ To render random character """
+    character = (random.sample(characters_db, 1))[0]
+    body = character.get('body')
+    return body
+
+
+def render_characters(output_dir, output_file_pattern_string='render%d.png', number=2):
     tiny_cafe_dir = 'D:/Projects/Blender/Tinycafe/'
     save_dir = tiny_cafe_dir + output_dir + f'{str(number)}/'
     characters_db_file = 'D:/Projects/Python/blender_test/characters_db.json'
@@ -24,8 +45,8 @@ def render_characters(output_dir, output_file_pattern_string='render%d.png', num
     iterations = 0
     if len(characters_db) >= number:
         while number > iterations:
-            character = (random.sample(characters_db, 1))[0]
-            body = character.get('body')
+            # body = special_character(characters_db, 'note')
+            body = random_character(characters_db)
             cache_list = []
             for part in body:
                 bpy.data.objects[part].hide_render = False
@@ -38,7 +59,6 @@ def render_characters(output_dir, output_file_pattern_string='render%d.png', num
             for part in cache_list:
                 bpy.data.objects[part].hide_render = True
             iterations += 1
-
 
     # for character in characters_db:
     #     body = character.get('body')

@@ -58,10 +58,10 @@ def create_characters_db(f):
     characters = list(yield_product(result, characters_count))
     # insert body_parts_injector
     clean_it_pass(characters)
-    characters = inject_body_parts(characters, notes, notes_count)
-    characters = inject_body_parts(characters, texts, texts_count)
-    characters = inject_body_parts(characters, doors, doors_count)
-    characters = inject_body_parts(characters, opttas, opttas_count)
+    inject_body_parts(characters, notes, notes_count)
+    inject_body_parts(characters, texts, texts_count)
+    inject_body_parts(characters, doors, doors_count)
+    inject_body_parts(characters, opttas, opttas_count)
     character_number = 1
     for character in characters:
         character_n = {"id": character_number, "body": character}
