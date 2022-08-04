@@ -40,7 +40,7 @@ def generate_products():
 
     objects_list = olc()  # objects_lists_creator()
     precooked_products = product_result(objects_list[0], objects_list[1], objects_list[2], objects_list[3],
-                                        objects_list[4], objects_list[5], objects_list[6])
+                                        objects_list[4])
     precooked_characters = []
     for character in precooked_products:
         generated_products = []

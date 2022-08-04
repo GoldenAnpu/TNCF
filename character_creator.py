@@ -40,12 +40,12 @@ def json_wrapper(func):
 @json_wrapper
 def create_characters_db(f):
     """CREATE DATABASE WITH UNIQUE CHARACTERS"""
-    characters_count = 1000
-    notes_count = 30
-    texts_count = 300
-    opttas_count = 20
+    characters_count = 235800
+    notes_count = 2000
+    texts_count = 3000
+    opttas_count = 2000
     doors_count = None
-    shuffle_iterations = 6
+    shuffle_iterations = 10
 
     with open('precooked_products.json') as file:
         result = json.load(file)
@@ -65,7 +65,7 @@ def create_characters_db(f):
     character_number = 1
     for character in characters:
         character_n = {"id": character_number, "body": character}
-        print(f'Added: {character_n}')
+        # print(f'Added: {character_n}')
         json_db = json.dumps(character_n)
         f.write(json_db + ',\n')
         character_number += 1

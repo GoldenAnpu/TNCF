@@ -64,11 +64,25 @@ eyes = [
     ['glasses', 'eyes_5_hypno']
 ]
 
+# bpy.data.materials.keys()
 materials = [
-    '36_griven', 'black_st', 'blue_light_bg_st', 'blue_st', 'brown_st_bg', 'chocolate_st', 'corral_st', 'eyes_hipno_st',
-    'glass_brown_st', 'glass_white_st', 'gradient_green_blue_bg', 'gradient_green_blue_st',
-    'gradient_pink_orange_st_bg', 'gradient_rainbow_bg', 'gradient_rainbow_st', 'gradient_violet_green_st_bg',
-    'gradient_yellow_orange_st_bg', 'green_cold_bg', 'green_cold_st', 'green_st_bg', 'lemon_st_bg', 'mint_st', 'neon',
-    'orange_st_bg', 'pink_light_st_bg', 'pink_natural_st_bg', 'poker_face', 'vaffle_st_bg', 'violet_st', 'violet_st_bg',
-    'white_st '
+    'black_st', 'blue_st', 'chocolate_st', 'corral_st', 'glass_brown_st', 'glass_white_st',
+    'gradient_green_blue_st', 'gradient_rainbow_st', 'green_cold_st', 'mint_st', 'violet_st', 'white_st',
+    'gradient_green_blue_bg', 'gradient_rainbow_bg', 'green_cold_bg',
+    'blue_light_st_bg', 'brown_st_bg', 'gradient_pink_orange_st_bg', 'gradient_violet_green_st_bg',
+    'gradient_yellow_orange_st_bg', 'lemon_st_bg', 'green_st_bg', 'orange_st_bg', 'pink_light_st_bg',
+    'pink_natural_st_bg', 'vaffle_st_bg', 'violet_st_bg'
 ]
+
+objects_with_changeable_materials = [
+    'base_bush', 'base_bush_back', 'base_cactus', 'base_stair', 'base_star_sea', 'base_stone', 'base_sup', 'base_tcan',
+    'base_tcan_open', 'cream_1_milk', 'cream_2_chocolate', 'cream_3_ice_balls', 'cream_4_ice', 'cream_5_marshmallow',
+    'door_1', 'door_2', 'door_3', 'door_4', 'eyes_6_hypno_glasses', 'glasses', 'lid_1', 'lid_2',
+    'lid_3_hat60x', 'lid_4_hat60x_cut', 'lid_5_ribbed', 'lid_6_up', 'opttas_question', 'opttas_tubule', 'tcandy_berry',
+    'tcandy_crystal', 'tongue_1', 'tongue_2_long', 'top_eggshell', 'top_jem_1', 'top_jem_2_drop', 'top_pills_happy',
+    'top_star_sweet', 'top_sweet_stick'
+]
+
+core = ['bg', 'cup']
+
+core_owcm = objects_with_changeable_materials + core

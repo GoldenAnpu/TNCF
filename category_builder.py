@@ -90,8 +90,8 @@ def create_category_list_of_objects(predefined_list, category, category_string):
 
 def objects_lists_creator():
     """CREATE LISTS WITH ALL SWITCHABLE PARTS FOR CHARACTERS"""
-    bg = ['bg']  # background
-    cup = ['cup']  # main sceleton
+    # bg = ['bg']  # background
+    # cup = ['cup']  # main sceleton
     p_doors = []  # just doors
     p_notes = []  # additional layer for bases
     p_text = []  # as tattoo on the side of cup
@@ -115,11 +115,11 @@ def objects_lists_creator():
     # caps list
     caps = caps_creator(creams, tops, lids)
     # list of all objects
-    list_of_categories = [bg, cup, bases, mouths, eyes, caps, tcandys, p_doors, p_notes, p_text, p_opttas]
+    list_of_categories = [bases, mouths, eyes, caps, tcandys, p_doors, p_notes, p_text, p_opttas]
     return list_of_categories
 
 
-opttas = objects_lists_creator()[10]
-texts = objects_lists_creator()[9]
-notes = objects_lists_creator()[8]
-doors = objects_lists_creator()[7]
+opttas = objects_lists_creator()[8]
+texts = objects_lists_creator()[7]
+notes = objects_lists_creator()[6]
+doors = objects_lists_creator()[5]
