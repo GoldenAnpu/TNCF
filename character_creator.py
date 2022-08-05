@@ -41,7 +41,7 @@ def json_wrapper(func):
 def create_characters_db(f):
     """CREATE DATABASE WITH UNIQUE CHARACTERS"""
     characters_count = 235800
-    notes_count = 2000
+    notes_count = 200
     texts_count = 3000
     opttas_count = 2000
     doors_count = None
