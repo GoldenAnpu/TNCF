@@ -119,7 +119,8 @@ def objects_lists_creator():
     return list_of_categories
 
 
-opttas = objects_lists_creator()[8]
-texts = objects_lists_creator()[7]
-notes = objects_lists_creator()[6]
-doors = objects_lists_creator()[5]
+created_object_lists = objects_lists_creator()
+opttas = created_object_lists[8]
+texts = created_object_lists[7]
+notes = created_object_lists[6]
+doors = created_object_lists[5]

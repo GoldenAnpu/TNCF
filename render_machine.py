@@ -2,6 +2,8 @@ import json
 import os
 import bpy
 import random
+from datetime import datetime
+import calendar
 from material_changer import make_it_colorful
 from predefined_categories import materials
 
@@ -42,7 +44,7 @@ def certain_id_character(characters_db, certain_id):
 def render_characters(output_dir, output_file_pattern_string='ch%d.png', number=2):
     tiny_cafe_dir = 'D:/Projects/Blender/tinycafe/'
     save_dir = tiny_cafe_dir + output_dir + '/'
-    characters_db_file = 'D:/Projects/Python/blender_test/characters_db.json'
+    characters_db_file = '/characters_db.json'
 
     with open(characters_db_file) as file:
         characters_db = json.load(file)
@@ -56,11 +58,11 @@ def render_characters(output_dir, output_file_pattern_string='ch%d.png', number=
     iterations = 0
     if len(characters_db) >= number:
         while number > iterations:
-            # body = special_character(characters_db, 'note')
-            # body = random_character(characters_db)[0]
-            # c_id = random_character(characters_db)[1]
-            body = certain_id_character(characters_db, 60690)[0]
-            c_id = certain_id_character(characters_db, 60690)[1]
+            character = special_character(characters_db, 'opttas_question')
+            #            character = certain_id_character(characters_db, 215020)
+            #            character  = random_character(characters_db)
+            body = character[0]
+            c_id = character[1]
             cache_list = []
             for part in body:
                 bpy.data.objects[part].hide_render = False
@@ -69,10 +71,8 @@ def render_characters(output_dir, output_file_pattern_string='ch%d.png', number=
             make_it_colorful('bg', materials)
             make_it_colorful('cup', materials)
 
-            if os.path.isdir(save_dir + str(c_id)):
-                sequence_dir = save_dir + str(c_id) + '_' + str(iterations)
-            else:
-                sequence_dir = save_dir + str(c_id)
+            time_now = calendar.timegm(datetime.utcnow().utctimetuple())
+            sequence_dir = save_dir + str(c_id) + '_' + str(time_now)
 
             bpy.context.scene.render.filepath = os.path.join(sequence_dir,
                                                              (output_file_pattern_string % iterations))
