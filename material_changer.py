@@ -12,9 +12,11 @@ def pick_material(part, p_materials):
         if (part in owcm) and ('_st' in s_material):
             n += 1
             return s_material
+
         if (part == 'bg') and ('_bg' in s_material):
             n += 1
             return s_material
+
         if part == 'cup':
             if s_material == 'white_st':
                 pass
@@ -23,6 +25,19 @@ def pick_material(part, p_materials):
             else:
                 n += 1
                 return s_material
+
+        if (part == 'base_sup') and (s_material == 'black_st'):
+            pass
+        else:
+            n += 1
+            return s_material
+
+        if (part != 'base_star_sea') and (s_material == 'corral_st'):
+            pass
+        else:
+            n += 1
+            return s_material
+
         if n == 1:
             break
 

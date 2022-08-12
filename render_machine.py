@@ -8,7 +8,7 @@ from material_changer import make_it_colorful
 from predefined_categories import materials
 
 
-def special_character(characters_db, special):
+def special_character(characters_db, *args):
     """ To render certain character:
                                     'text_cafe'
                                     'note_36'
@@ -16,12 +16,24 @@ def special_character(characters_db, special):
                                     'opttas_question'
                                     'opttas_tubule'
     """
+    specials = [special for special in args]
+    checked_set = set()
     while True:
         character = (random.sample(characters_db, 1))[0]
         body = character.get('body')
         c_id = character.get('id')
-        if special in body:
+        found = False
+        missed = False
+        for special in specials:
+            if special in body:
+                found = True
+            else:
+                missed = True
+        if found and (missed is False):
             return body, c_id
+        checked_set.add(c_id)
+        if len(checked_set) == len(characters_db):
+            break
 
 
 def random_character(characters_db):
