@@ -108,7 +108,6 @@ def inject_body_parts(characters, parts, count=None):
                             random_characters.remove('top_pills_happy')
                         random_characters.append(random_parts)
                         n += 1
-                        print(random_characters)
                         break
                     else:
                         break

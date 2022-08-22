@@ -66,7 +66,7 @@ eyes = [
 
 # bpy.data.materials.keys()
 materials = [
-    'black_st', 'blue_st', 'chocolate_st', 'corral_st', 'glass_brown_st', 'glass_white_st',
+    'blue_st', 'chocolate_st', 'corral_st',
     'gradient_green_blue_st', 'gradient_rainbow_st', 'green_cold_st', 'mint_st', 'violet_st', 'white_st',
     'gradient_green_blue_bg', 'gradient_rainbow_bg', 'green_cold_bg',
     'blue_light_st_bg', 'brown_st', 'gradient_pink_orange_st_bg', 'gradient_violet_green_st_bg',

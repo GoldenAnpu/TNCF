@@ -7,36 +7,52 @@ from predefined_categories import core_owcm
 def pick_material(part, p_materials):
     n = 0
     while True:
+        passed_1 = 0
+        passed_2 = 0
         random.shuffle(p_materials)
         s_material = p_materials[0]
-        if (part in owcm) and ('_st' in s_material):
-            n += 1
-            return s_material
+        if part in owcm and '_st' in s_material:
 
-        if (part == 'bg') and ('_bg' in s_material):
+            if part != 'base_star_sea' and s_material == 'corral_st':
+                passed_1 += 1
+
+            if s_material == 'white_st':
+                if 'lid_' in part or 'cream_' in part:
+                    n += 1
+                    return s_material
+                else:
+                    passed_1 += 1
+
+            if 'tongue' in part:
+                if s_material == 'brown_st':
+                    passed_1 += 1
+                elif s_material == 'vaffle_st_bg':
+                    passed_1 += 1
+                elif s_material == 'chocolate_st':
+                    passed_1 += 1
+
+            if passed_1 < 1:
+                n += 1
+                return s_material
+
+        if part == 'bg' and '_bg' in s_material:
             n += 1
             return s_material
 
         if part == 'cup':
             if s_material == 'white_st':
-                pass
+                passed_2 += 1
             elif s_material == 'corral_st':
-                pass
-            else:
+                passed_2 += 1
+            elif s_material == 'brown_st':
+                passed_2 += 1
+            elif s_material == 'chocolate_st':
+                passed_2 += 1
+            elif s_material == 'gradient_rainbow_st':
+                passed_2 += 1
+            if passed_2 < 1:
                 n += 1
                 return s_material
-
-        if (part == 'base_sup') and (s_material == 'black_st'):
-            pass
-        else:
-            n += 1
-            return s_material
-
-        if (part != 'base_star_sea') and (s_material == 'corral_st'):
-            pass
-        else:
-            n += 1
-            return s_material
 
         if n == 1:
             break
@@ -87,7 +103,7 @@ def count_material_slots(part):
         return slots
 
 
-def make_it_colorful(part, m_materials):
+def make_it_colorful(part, m_materials, color_cash_list):
     """ Change materials for certain part """
     if part not in core_owcm:
         pass
@@ -95,4 +111,18 @@ def make_it_colorful(part, m_materials):
         list_of_slots = count_material_slots(part)  # define slots to be replaced for certain part
         for slot in list_of_slots:
             c_material = pick_material(part, m_materials)  # define material for special slot
-            change_material(part, c_material, slot)  # change material for this slot
+            while True:
+                if "_bg" in c_material:
+                    if color_cash_list.count(c_material) < 1:
+                        change_material(part, c_material, slot)
+                        color_cash_list.append(c_material)
+                        break
+                    else:
+                        c_material = pick_material(part, m_materials)
+                if "_st" in c_material:
+                    if color_cash_list.count(c_material) < 2:
+                        change_material(part, c_material, slot)
+                        color_cash_list.append(c_material)
+                        break
+                    else:
+                        c_material = pick_material(part, m_materials)

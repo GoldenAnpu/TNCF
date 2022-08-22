@@ -22,8 +22,6 @@ def caps_creator(creams, tops, lids):
             pass
         elif 'top_jem_1' in cap and 'cream_5_marshmallow' in cap:
             pass
-        elif 'top_jem_1' in cap and 'cream_4_ice' in cap:
-            pass
         elif 'top_jem_2_drop' in cap and 'cream_1_milk' in cap:
             pass
         elif 'top_jem_2_drop' in cap and 'cream_2_chocolate' in cap:

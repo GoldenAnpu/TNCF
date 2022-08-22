@@ -76,12 +76,15 @@ def render_characters(output_dir, output_file_pattern_string='ch%d.png', number=
             body = character[0]
             c_id = character[1]
             cache_list = []
+            color_cash_list = []
+
+            make_it_colorful('bg', materials, color_cash_list)
+            make_it_colorful('cup', materials, color_cash_list)
+
             for part in body:
                 bpy.data.objects[part].hide_render = False
                 cache_list.append(part)
-                make_it_colorful(part, materials)
-            make_it_colorful('bg', materials)
-            make_it_colorful('cup', materials)
+                make_it_colorful(part, materials, color_cash_list)
 
             time_now = calendar.timegm(datetime.utcnow().utctimetuple())
             sequence_dir = save_dir + str(c_id) + '_' + str(time_now)
