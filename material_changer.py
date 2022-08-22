@@ -113,7 +113,7 @@ def make_it_colorful(part, m_materials, color_cash_list):
             c_material = pick_material(part, m_materials)  # define material for special slot
             while True:
                 if "_bg" in c_material:
-                    if color_cash_list.count(c_material) < 1:
+                    if color_cash_list.count(c_material) < 2:
                         change_material(part, c_material, slot)
                         color_cash_list.append(c_material)
                         break

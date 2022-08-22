@@ -61,18 +61,17 @@ def render_characters(output_dir, output_file_pattern_string='ch%d.png', number=
     with open(characters_db_file) as file:
         characters_db = json.load(file)
 
-    shuffle_iterations = 0
-    shuffles = 0
-    while shuffle_iterations != shuffles:
-        random.shuffle(characters_db)
-        shuffles += 1
-
     iterations = 0
     if len(characters_db) >= number:
         while number > iterations:
-            character = special_character(characters_db, 'opttas_question')
-            #            character = certain_id_character(characters_db, 215020)
-            #            character  = random_character(characters_db)
+            shuffle_iterations = 0
+            shuffles = 3
+            while shuffle_iterations != shuffles:
+                random.shuffle(characters_db)
+                shuffles += 1
+            # character = special_character(characters_db, 'opttas_question')
+            # character = certain_id_character(characters_db, 215020)
+            character = random_character(characters_db)
             body = character[0]
             c_id = character[1]
             cache_list = []
@@ -95,24 +94,6 @@ def render_characters(output_dir, output_file_pattern_string='ch%d.png', number=
             for part in cache_list:
                 bpy.data.objects[part].hide_render = True
             iterations += 1
-
-    # for character in characters_db:
-    #     body = character.get('body')
-    #     if len(characters_db) >= number > iterations:
-    #         cache_list = []
-    #         for part in body:
-    #             bpy.data.objects[part].hide_render = False
-    #             cache_list.append(part)
-    #             make_it_colorful(part, materials)
-    #         make_it_colorful('bg', materials)
-    #         make_it_colorful('cup', materials)
-    #         bpy.context.scene.render.filepath = os.path.join(output_dir, (output_file_pattern_string % iterations))
-    #         bpy.ops.render.render(write_still=True)
-    #         for part in cache_list:
-    #             bpy.data.objects[part].hide_render = True
-    #         iterations += 1
-    #     else:
-    #         break
 
 
 render_characters('animated', 'r_%d', 100)
