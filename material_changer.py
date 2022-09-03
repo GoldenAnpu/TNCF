@@ -31,6 +31,36 @@ def pick_material(part, p_materials):
                 elif s_material == 'chocolate_st':
                     passed_1 += 1
 
+            if 'cream_5_marshmallow' in part:
+                if s_material == 'brown_st':
+                    passed_1 += 1
+                elif s_material == 'vaffle_st_bg':
+                    passed_1 += 1
+                elif s_material == 'chocolate_st':
+                    passed_1 += 1
+                elif s_material == 'violet_st_bg':
+                    passed_1 += 1
+                elif s_material == 'green_st_bg':
+                    passed_1 += 1
+                elif s_material == 'green_cold_st':
+                    passed_1 += 1
+                elif s_material == 'green_cold_bg':
+                    passed_1 += 1
+                elif s_material == 'gradient_violet_green_st_bg':
+                    passed_1 += 1
+                elif s_material == 'blue_st':
+                    passed_1 += 1
+                elif s_material == 'gradient_green_blue_st':
+                    passed_1 += 1
+                elif s_material == 'gradient_rainbow_st':
+                    passed_1 += 1
+                elif s_material == 'violet_st':
+                    passed_1 += 1
+                elif s_material == 'gradient_green_blue_bg':
+                    passed_1 += 1
+                elif s_material == 'pink_natural_st_bg':
+                    passed_1 += 1
+
             if passed_1 < 1:
                 n += 1
                 return s_material
