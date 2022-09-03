@@ -26,6 +26,27 @@ def additional_filter(precooked_characters):
     return precooked_characters
 
 
+def additional_filter_2(precooked_characters):
+    pointer = 0
+    bingo = 0
+    while True:
+        character = precooked_characters[pointer]
+        if 'cream_6_3pics' in character:
+            bingo += 1
+        if 'top_berries' in character:
+            bingo += 1
+        if 'top_decoration' in character:
+            bingo += 1
+        if bingo == 0:
+            precooked_characters.remove(character)
+        else:
+            bingo = 0
+            pointer += 1
+        if pointer == len(precooked_characters):
+            break
+    return precooked_characters
+
+
 def body_parts_extractor(part, body_parts):
     """EXTRACT NESTED LISTS AND TO FILL body_parts"""
     if isinstance(part, list):
@@ -48,12 +69,13 @@ def generate_products():
             body_parts_extractor(part, generated_products)
         precooked_characters.append(generated_products)
     additional_filter(precooked_characters)
+    # additional_filter_2(precooked_characters)  # needs only special
     return precooked_characters
 
 
 def result_to_json(result):
     """SAVE result IN precooked_products.json FILE"""
-    json_file_name = 'precooked_products.json'
+    json_file_name = 'precooked_products_new.json'
     if os.path.exists(json_file_name):
         os.remove(json_file_name)
     f = open(json_file_name, 'w')

@@ -2,12 +2,13 @@
 objects_to_sort = [
     'base_bush', 'base_bush_back', 'base_cactus', 'base_stair', 'base_star_sea', 'base_stone', 'base_sup',
     'base_tcan', 'base_tcan_open', 'cream_1_milk', 'cream_2_chocolate', 'cream_3_ice_balls', 'cream_4_ice',
-    'door_1', 'door_2', 'door_3', 'door_4', 'eyes_1_normal', 'eyes_2_dead', 'eyes_3_love',
+    'door_1', 'door_2', 'door_3', 'door_4', 'eyes_1_normal', 'eyes_2_dead', 'eyes_3_love', 'cream_6_3pics',
     'eyes_4_surprised', 'eyes_5_hypno', 'eyes_6_hypno_glasses', 'eyes_7_sq_g_glasses', 'lid_1',
     'lid_2', 'lid_3_hat60x', 'lid_4_hat60x_cut', 'lid_5_ribbed', 'lid_6_up', 'note_36', 'note_pface',
     'opttas_question', 'opttas_tubule', 'tcandy_berry', 'tcandy_crystal', 'teeth_1_norm', 'teeth_2_sharp',
     'teeth_norm_wo_tongue', 'text_cafe', 'tongue_1', 'tongue_2_long', 'top_bubs', 'top_eggshell',
-    'top_jem_1', 'top_jem_2_drop', 'cream_5_marshmallow', 'top_pills_happy', 'top_star_sweet', 'top_sweet_stick'
+    'top_jem_1', 'top_jem_2_drop', 'cream_5_marshmallow', 'top_pills_happy', 'top_star_sweet', 'top_sweet_stick',
+    'top_berries', 'top_decoration'
 ]
 
 bases = [
@@ -77,10 +78,10 @@ materials = [
 objects_with_changeable_materials = [
     'base_bush', 'base_bush_back', 'base_cactus', 'base_stair', 'base_star_sea', 'base_stone', 'base_sup', 'base_tcan',
     'base_tcan_open', 'cream_1_milk', 'cream_2_chocolate', 'cream_3_ice_balls', 'cream_4_ice', 'cream_5_marshmallow',
-    'door_1', 'door_2', 'door_3', 'door_4', 'eyes_6_hypno_glasses', 'glasses', 'lid_1', 'lid_2',
+    'cream_6_3pics', 'door_1', 'door_2', 'door_3', 'door_4', 'eyes_6_hypno_glasses', 'glasses', 'lid_1', 'lid_2',
     'lid_3_hat60x', 'lid_4_hat60x_cut', 'lid_5_ribbed', 'lid_6_up', 'opttas_question', 'opttas_tubule', 'tcandy_berry',
     'tcandy_crystal', 'tongue_1', 'tongue_2_long', 'top_eggshell', 'top_jem_1', 'top_jem_2_drop', 'top_pills_happy',
-    'top_star_sweet', 'top_sweet_stick'
+    'top_star_sweet', 'top_sweet_stick', 'top_berries', 'top_decoration', 'top_bubs'
 ]
 
 core = ['bg', 'cup']
@@ -102,6 +103,7 @@ translator = {
     'cream_3_ice_balls': 'Cream: Milk with Ice Balls',
     'cream_4_ice': 'Cream: Ice',
     'cream_5_marshmallow': 'Cream: Marshmallow',
+    'cream_6_3pics': 'Cream: Triple Mousse',
     'door_1': 'Door: Elevator',
     'door_2': 'Door: Carved',
     'door_3': 'Door: With round window',
@@ -134,6 +136,8 @@ translator = {
     'tongue_2_long': 'Tongue: Long',
     'top_bubs': 'Adds: BUBS',
     'top_eggshell': 'Adds: Eggshell',
+    'top_berries': 'Adds: Berries',
+    'top_decoration': 'Adds: Confetti',
     'top_jem_1': 'Adds: Jem Crunchy',
     'top_jem_2_drop': 'Adds: Jem with Drops',
     'top_pills_happy': 'Adds: Pills Happy',

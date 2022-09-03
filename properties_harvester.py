@@ -52,6 +52,6 @@ def create_files_with_properties(id_list, db_file):
                     meta_file.write('}]')
 
 
-create_files_with_properties(sorted_id_keys, 'characters_db.json')
-create_files_with_properties(sorted_id_keys_old, 'characters_db_old.json')
+create_files_with_properties(sorted_id_keys, 'characters_db_new.json')
+# create_files_with_properties(sorted_id_keys_old, 'characters_db_old.json')
 print('Properties assigned')

@@ -119,6 +119,15 @@ def count_material_slots(part):
     elif part == 'cream_3_ice_balls':
         slots = [0, 1, 2, 3]
         return slots
+    elif part == 'cream_6_3pics':
+        slots = [0, 1]
+        return slots
+    elif part == 'top_decoration':
+        slots = [0, 1, 2, 3, 4]
+        return slots
+    elif part == 'top_bubs':
+        slots = [0, 1, 2, 3]
+        return slots
     elif part == 'eyes_6_hypno_glasses':
         slots = [1]
         return slots

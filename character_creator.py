@@ -22,7 +22,7 @@ def yield_product(generated_products, counter):
 def json_wrapper(func):
     """CREATE AND FILL json_file_name"""
     def wrapped():
-        json_file_name = 'characters_db.json'
+        json_file_name = 'characters_db_new.json'
         if os.path.exists(json_file_name):
             os.remove(json_file_name)
         f = open(json_file_name, 'w')
@@ -40,14 +40,14 @@ def json_wrapper(func):
 @json_wrapper
 def create_characters_db(f):
     """CREATE DATABASE WITH UNIQUE CHARACTERS"""
-    characters_count = 235800
+    characters_count = 1235800
     notes_count = 2000
     texts_count = 3000
     opttas_count = 2000
     doors_count = None
     shuffle_iterations = 6
 
-    with open('precooked_products.json') as file:
+    with open('precooked_products_new.json') as file:
         result = json.load(file)
 
     iterations = 0
@@ -62,7 +62,7 @@ def create_characters_db(f):
     inject_body_parts(characters, texts, texts_count)
     inject_body_parts(characters, doors, doors_count)
     inject_body_parts(characters, opttas, opttas_count)
-    character_number = 1
+    character_number = 235801
     for character in characters:
         character_n = {"id": character_number, "body": character}
         # print(f'Added: {character_n}')
