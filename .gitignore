@@ -1,5 +1,4 @@
-
 .idea
-test.py
-test_db.json
 /chrome_profile
+/database
+.json

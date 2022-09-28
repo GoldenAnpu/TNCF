@@ -1,15 +1,15 @@
 """
-PRODUCTS EQUAL TO NOT PREPARED CHARACTERS
-THEY ARE CREATES BY character_creator.py
+PRODUCTS ARE NOT PREPARED CHARACTERS
+TO CREATE CHARACTERS USE character_creator.py
 """
 
 import json
-import os
 from category_builder import objects_lists_creator as olc
-from randomizer import product_result
+from additional_func import product_result
 
 
 def additional_filter(precooked_characters):
+    """ Remove forbidden products as additional layer of filtration """
     pointer = 0
     while True:
         character = precooked_characters[pointer]
@@ -27,6 +27,7 @@ def additional_filter(precooked_characters):
 
 
 def additional_filter_2(precooked_characters):
+    """ Get only special products with "cream_6_3pics", "top_berries", "top_decoration" """
     pointer = 0
     bingo = 0
     while True:
@@ -48,7 +49,7 @@ def additional_filter_2(precooked_characters):
 
 
 def body_parts_extractor(part, body_parts):
-    """EXTRACT NESTED LISTS AND TO FILL body_parts"""
+    """EXTRACT NESTED LISTS AND FILL body_parts"""
     if isinstance(part, list):
         for nested_object in part:
             body_parts.append(nested_object)
@@ -60,7 +61,10 @@ def generate_products():
     """GENERATE PRODUCTS W/O OPTIONALS"""
 
     objects_list = olc()  # objects_lists_creator()
-    precooked_products = product_result(objects_list[0], objects_list[1], objects_list[2], objects_list[3],
+    precooked_products = product_result(objects_list[0],
+                                        objects_list[1],
+                                        objects_list[2],
+                                        objects_list[3],
                                         objects_list[4])
     precooked_characters = []
     for character in precooked_products:
@@ -69,18 +73,16 @@ def generate_products():
             body_parts_extractor(part, generated_products)
         precooked_characters.append(generated_products)
     additional_filter(precooked_characters)
-    # additional_filter_2(precooked_characters)  # needs only special
+    # additional_filter_2(precooked_characters)
     return precooked_characters
 
 
 def result_to_json(result):
     """SAVE result IN precooked_products.json FILE"""
-    json_file_name = 'precooked_products_new.json'
-    if os.path.exists(json_file_name):
-        os.remove(json_file_name)
-    f = open(json_file_name, 'w')
-    json_db = json.dumps(result)
-    f.write(json_db)
+    with open('json/precooked_products.json', 'w+') as file:
+        json_db = json.dumps(result)
+        file.write(json_db)
 
 
-result_to_json(generate_products())
+if __name__ == "__main__":
+    result_to_json(generate_products())

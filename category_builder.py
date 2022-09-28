@@ -1,5 +1,5 @@
 from predefined_categories import bases, mouths, eyes, objects_to_sort
-from randomizer import product_result
+from additional_func import product_result
 
 
 def caps_creator(creams, tops, lids):
@@ -98,8 +98,6 @@ def create_category_list_of_objects(predefined_list, category, category_string):
 
 def objects_lists_creator():
     """CREATE LISTS WITH ALL SWITCHABLE PARTS FOR CHARACTERS"""
-    # bg = ['bg']  # background
-    # cup = ['cup']  # main sceleton
     p_doors = []  # just doors
     p_notes = []  # additional layer for bases
     p_text = []  # as tattoo on the side of cup

@@ -1,11 +1,17 @@
+""" This tool adds special parts in time of characters creation
+ You could choose amount of characters with specials"""
+
+
 import random
 from category_builder import notes, opttas, texts
 
 
 def inject_body_parts(characters, parts, count=None):
-    """ADD OPTIONAL PARTS IN CHARACTERS
+    """ Add optional parts in character.
 
-    Without argument count all characters get part.
+        Without argument "count" all characters get a part.
+
+        Returns updated characters.
     """
     if count is None:
         count = len(characters)

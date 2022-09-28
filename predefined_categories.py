@@ -1,4 +1,7 @@
-# bpy.data.objects.keys()
+""" Container with variables """
+
+
+# to gather this list use bpy.data.objects.keys() in Blender Scripting terminal
 objects_to_sort = [
     'base_bush', 'base_bush_back', 'base_cactus', 'base_stair', 'base_star_sea', 'base_stone', 'base_sup',
     'base_tcan', 'base_tcan_open', 'cream_1_milk', 'cream_2_chocolate', 'cream_3_ice_balls', 'cream_4_ice',
@@ -11,6 +14,7 @@ objects_to_sort = [
     'top_berries', 'top_decoration'
 ]
 
+# these are predefined environments of scenes (on your taste) to decrease time of generation algorythm
 bases = [
     'base_star_sea',
     'base_stone',
@@ -42,6 +46,7 @@ bases = [
     ['base_bush', 'base_tcan_open', 'base_stair']
 ]
 
+# to decrease time of generation algorythm
 mouths = [
     'teeth_norm_wo_tongue',
     ['teeth_1_norm', 'tongue_1'],
@@ -50,6 +55,7 @@ mouths = [
     ['teeth_2_sharp', 'tongue_2_long'],
 ]
 
+# to decrease time of generation algorythm
 eyes = [
     'eyes_1_normal',
     'eyes_2_dead',
@@ -65,7 +71,8 @@ eyes = [
     ['glasses', 'eyes_5_hypno']
 ]
 
-# bpy.data.materials.keys()
+# to gather this list use bpy.data.materials.keys() in Blender Scripting terminal
+# will be used to "repaint" objects
 materials = [
     'blue_st', 'chocolate_st', 'corral_st',
     'gradient_green_blue_st', 'gradient_rainbow_st', 'green_cold_st', 'mint_st', 'violet_st', 'white_st',
@@ -75,6 +82,7 @@ materials = [
     'pink_natural_st_bg', 'vaffle_st_bg', 'violet_st_bg'
 ]
 
+# owcm - list of objects which will be repainted
 objects_with_changeable_materials = [
     'base_bush', 'base_bush_back', 'base_cactus', 'base_stair', 'base_star_sea', 'base_stone', 'base_sup', 'base_tcan',
     'base_tcan_open', 'cream_1_milk', 'cream_2_chocolate', 'cream_3_ice_balls', 'cream_4_ice', 'cream_5_marshmallow',
@@ -84,10 +92,14 @@ objects_with_changeable_materials = [
     'top_star_sweet', 'top_sweet_stick', 'top_berries', 'top_decoration', 'top_bubs'
 ]
 
+# objects which must be in all characters
 core = ['bg', 'cup']
 
-core_owcm = objects_with_changeable_materials + core
+# common list of objects which must be repainted
+objects_core_owcm = objects_with_changeable_materials + core
 
+
+# this dictionary used to prepare metadata
 translator = {
     'base_bush': 'Environment: Bush',
     'base_bush_back': 'Environment: Backyard Bush',

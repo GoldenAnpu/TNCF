@@ -4,6 +4,7 @@ import subprocess
 import logging
 import json
 import shutil
+import random
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
@@ -15,22 +16,20 @@ logging.basicConfig(level=logging.INFO)
 
 # VARIABLES #
 browser_port = 8989
-file_folder = 'D:/Projects/Blender/tinycafe/webp/'
-uploaded_folder = 'D:/Projects/Blender/tinycafe/uploaded_webp/'
-json_folder = 'D:/Projects/Blender/tinycafe/json/'
+file_folder = ''  # path for media files for upload: webp
+uploaded_folder = ''  # path for uploaded media files
+json_folder = ''  # path for metadata files: json
 
 
 put_on_market = "Yes"
-token_price = 0.016  # Please Enter Your Price here
-collection = "Tiny Cafe"
-loop_title = "#"  # Please Enter Your Title name here
-image_file_format = "webp"  # Please provide your format "png" , "jpg" , "mp4"
-cover_file_format = "jpg"  # Please provide your format "png" , "jpg" , "mp4"
+token_price = 0.016  # set price here
+collection = "Tiny Cafe"  # choose your smart contract (Collection) name
+loop_title = "#"  # set title name here
+image_file_format = "webp"  # choose format for upload file "png" , "jpg" , "mp4" or "webp"
+cover_file_format = "jpg"  # choose format for cover file "png" , "jpg" , "mp4"
 cover_name = "r_0001"
-token_description = ""  # please enter your description here
+token_description = ""  # write description for all items here
 royalties = "10"
-
-
 
 
 # XPATH and CSS #
@@ -64,7 +63,7 @@ def click_element(code, search_type=By.CSS_SELECTOR, fail_message="Element not f
             ce = wait.until(ec.presence_of_element_located((search_type, code)))
             ce.click()
             if code == MINT_BUTTON or code == SCROLLED_BUTTON:
-                time.sleep(5)
+                time.sleep(2)
             else:
                 time.sleep(1)
             break
@@ -99,7 +98,7 @@ def go_to(address, fail_message="Address not found"):
             time.sleep(1)
 
 
-def fill_all_properties(json_name):
+def fill_all_properties(json_name):  # get metadata from file and insert into metadata fields
     prop_key = 1
     prop_value = 2
 
@@ -127,7 +126,7 @@ def click_metamask_sign_button():
                 break
         try:
             logging.info("Waiting for metamask popup, please wait...")
-            time.sleep(5)
+            time.sleep(2)
             for handle in driver.window_handles:
                 if handle != main_page:
                     login_page = handle
@@ -150,6 +149,7 @@ def click_metamask_sign_button():
         pass
 
 
+# execution steps
 main_directory = os.getcwd()
 open_chrome_profile()
 op = webdriver.ChromeOptions()
@@ -165,6 +165,7 @@ go_to("https://rarible.com/create/start/ethereum")
 click_element(CREATE_SINGLE_BUTTON)
 
 items = os.listdir(file_folder)
+random.shuffle(items)
 item_count = len(items)
 
 for item in items:
@@ -214,7 +215,7 @@ for item in items:
     driver.switch_to.window(main_page)  # to focus on firstly opened window
 
     # store items in case of fail
-    with open('D:/Projects/Blender/python_tool/uploaded.txt', 'a', encoding='UTF-8') as uploaded_items:
+    with open('/database/uploaded.txt', 'a', encoding='UTF-8') as uploaded_items:
         uploaded_items.write(str(image_name) + '\n')
     shutil.move(f'{file_folder}{image_name}.{image_file_format}', uploaded_folder)
     click_element(MINT_ANOTHER_BUTTON)  # to get into the loop and prepare another NFT

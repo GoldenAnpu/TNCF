@@ -56,7 +56,7 @@ def certain_id_character(characters_db, certain_id):
 def render_characters(output_dir, output_file_pattern_string='ch%d.png', number=2):
     tiny_cafe_dir = 'D:/Projects/Blender/tinycafe/'
     save_dir = tiny_cafe_dir + output_dir + '/'
-    characters_db_file = '/characters_db.json'
+    characters_db_file = 'json/characters_db.json'
 
     with open(characters_db_file) as file:
         characters_db = json.load(file)

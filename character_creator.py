@@ -1,9 +1,8 @@
 import json
-import os
 import random
 from body_parts_injector import inject_body_parts
 from category_builder import texts, notes, doors, opttas
-from it_pass_cleaner import clean_it_pass
+from additional_func import clean_it_pass
 
 
 def yield_product(generated_products, counter):
@@ -22,23 +21,20 @@ def yield_product(generated_products, counter):
 def json_wrapper(func):
     """CREATE AND FILL json_file_name"""
     def wrapped():
-        json_file_name = 'characters_db_new.json'
-        if os.path.exists(json_file_name):
-            os.remove(json_file_name)
-        f = open(json_file_name, 'w')
-        f.write('[')
+        with open('json/characters_db.json', 'w+') as file:
+            file.write('[')
 
-        func(f)
+            func(file)
 
-        f.seek(0, 2)  # seek to end of file; f.seek(0, os.SEEK_END) is legal
-        f.seek(f.tell() - 3, 0)  # seek to the second last char of file; f.seek(f.tell()-2, os.SEEK_SET) is legal
-        f.truncate()
-        f.write(']')
+            file.seek(0, 2)  # seek to end of file; f.seek(0, os.SEEK_END) is legal
+            file.seek(file.tell() - 3, 0)  # seek to the second last char of file; f.seek(f.tell()-2, os.SEEK_SET) is legal
+            file.truncate()
+            file.write(']')
     return wrapped
 
 
 @json_wrapper
-def create_characters_db(f):
+def create_characters_db(file):
     """CREATE DATABASE WITH UNIQUE CHARACTERS"""
     characters_count = 1235800
     notes_count = 2000
@@ -47,8 +43,8 @@ def create_characters_db(f):
     doors_count = None
     shuffle_iterations = 6
 
-    with open('precooked_products_new.json') as file:
-        result = json.load(file)
+    with open('json/precooked_products.json') as pre_file:
+        result = json.load(pre_file)
 
     iterations = 0
     while shuffle_iterations != iterations:
@@ -56,19 +52,15 @@ def create_characters_db(f):
         iterations += 1
 
     characters = list(yield_product(result, characters_count))
-    # insert body_parts_injector
     clean_it_pass(characters)
     inject_body_parts(characters, notes, notes_count)
     inject_body_parts(characters, texts, texts_count)
     inject_body_parts(characters, doors, doors_count)
     inject_body_parts(characters, opttas, opttas_count)
-    character_number = 235801
+    character_number = 1  # initial id
     for character in characters:
         character_n = {"id": character_number, "body": character}
-        # print(f'Added: {character_n}')
         json_db = json.dumps(character_n)
-        f.write(json_db + ',\n')
+        file.write(json_db + ',\n')
         character_number += 1
 
-
-create_characters_db()

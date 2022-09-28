@@ -1,10 +1,16 @@
+"""
+This tool changes materials for body parts by using predefined logic
+"""
+
+
 import random
 import bpy
 from predefined_categories import objects_with_changeable_materials as owcm
-from predefined_categories import core_owcm
+from predefined_categories import objects_core_owcm
 
 
 def pick_material(part, p_materials):
+    """ Pick material from predefined pool of material for this body part"""
     n = 0
     while True:
         passed_1 = 0
@@ -97,7 +103,8 @@ def change_material(part, c_material, slot=0):
             obj.material_slots[slot].material = mat
 
 
-def count_material_slots(part):
+def set_material_slots(part):
+    """ Every body part has predefined slot that could change materials """
     if part == 'base_bush_back':
         slots = [0, 1]
         return slots
@@ -143,22 +150,22 @@ def count_material_slots(part):
 
 
 def make_it_colorful(part, m_materials, color_cash_list):
-    """ Change materials for certain part """
-    if part not in core_owcm:
+    """ Full replacement cycle of materials for a specific part """
+    if part not in objects_core_owcm:
         pass
     else:
-        list_of_slots = count_material_slots(part)  # define slots to be replaced for certain part
+        list_of_slots = set_material_slots(part)  # define slots to be replaced for certain part
         for slot in list_of_slots:
             c_material = pick_material(part, m_materials)  # define material for special slot
             while True:
-                if "_bg" in c_material:
+                if "_bg" in c_material:  # for backgrounds
                     if color_cash_list.count(c_material) < 2:
                         change_material(part, c_material, slot)
                         color_cash_list.append(c_material)
                         break
                     else:
                         c_material = pick_material(part, m_materials)
-                if "_st" in c_material:
+                if "_st" in c_material:  # for objects
                     if color_cash_list.count(c_material) < 2:
                         change_material(part, c_material, slot)
                         color_cash_list.append(c_material)
