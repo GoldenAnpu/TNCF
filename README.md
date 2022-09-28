@@ -1,7 +1,5 @@
 # Randomly generated 3D collection
 
----
-
 ### Description
 This toolset helps to create randomly generated 3D collection of characters that could be used as NFTs.
 You need to prepare characters in Blender and separate them by parts as objects which could replace each other in their categories.
