@@ -4,10 +4,6 @@
 
 ### [You could see results on Rarible](https://rarible.com/tinycafe)
 
-<img src="https://assets.raribleuserdata.com/prod/v1/image/t_image_big/aHR0cHM6Ly9pcGZzLmlvL2lwZnMvYmFmeWJlaWZ3c3RtdzI3NnM0Z2huazZwbWFzanY1dTVjeWFma3p0aTZxYWM2dnRweGdhbnRkYW9zNXUvaW1hZ2Uud2VicA==" height="200" alt="">
-<img src="https://assets.raribleuserdata.com/prod/v1/image/t_image_big/aHR0cHM6Ly9pcGZzLmlvL2lwZnMvYmFmeWJlaWJpNXh6eGs2aGV2ZDRwaHdxNnRwcWFnNGNqbDJlN3FwaGh4YnFiNG1qYmF6eW1sc3U0dWUvaW1hZ2Uud2VicA==" height="200" alt="">
-<img src="https://assets.raribleuserdata.com/prod/v1/image/t_image_big/aHR0cHM6Ly9pcGZzLmlvL2lwZnMvYmFmeWJlaWg1amZnZG5xN3NhYnU3bzdpZ2F4aWEzNXhzemZzZ3RzdnUyc2hoY2liYjNheDVyb2Zza3EvaW1hZ2Uud2VicA==" height="200" alt="">
-<img src="https://assets.raribleuserdata.com/prod/v1/image/t_image_big/aHR0cHM6Ly9pcGZzLmlvL2lwZnMvYmFmeWJlaWNreGl4a2tyZmduaWp0aG9xd3RuenVzYmR4Z2Z5NTZzNDNtdG02MmE0bHdlYnZyajN2dXkvaW1hZ2Uud2VicA==" height="200" alt="">
 
 ### Description
 This toolset helps to create randomly generated 3D collection of characters that could be used as NFTs.
